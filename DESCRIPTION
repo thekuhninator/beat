@@ -25,3 +25,4 @@ Imports:
     readr,
     matrixStats
 Remotes: theislab/kbet
+    bioc::M3C
