@@ -1,0 +1,16 @@
+Package: beat
+Title: A Package for Assessing the Magnitute of the Batch Effect in RNA-Seq Data.
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Roman",
+           family = "Kuhn",
+           role = c("aut", "cre"),
+           email = "roman.kuhn1@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: The beat package given an input of metdata and gene counts will output an HTML report with a Kbet score, PCA plot, T-SNE plot, and comparative boxplot, for the user to assess the magnitutde of the batch effect present in their dataset. For more instructions on how to use the beat package, see the Github repo.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
