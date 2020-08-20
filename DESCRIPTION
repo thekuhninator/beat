@@ -24,5 +24,6 @@ Imports:
     M3C,
     readr,
     matrixStats
-Remotes: theislab/kbet,
+Remotes: 
+    theislab/kbet,
     bioc::M3C
