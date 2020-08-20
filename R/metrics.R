@@ -4,7 +4,6 @@
 
 kbet <- function(gene_counts, annot, output_dir, output_name)
 {
-  print('Made it to the beggninning of this function')
   # get the factor of interest (not currently used)
   #foi = annot[factor_of_interest]
 
@@ -20,7 +19,6 @@ kbet <- function(gene_counts, annot, output_dir, output_name)
   data = gene_counts
 
   batch = annot$batch
-  print('did we make it pas this far?')
   # Capitalize Function
 
   capitalize <- function(x) {
@@ -34,20 +32,16 @@ kbet <- function(gene_counts, annot, output_dir, output_name)
 
   file_path <- paste( file.path(output_dir, output_name), "_kbet_plot.png", sep="")
   png(file=file_path)
-  print('running kbet')
-  print(dim(data))
-  print(dim(batch))
   batch.estimate <- kBET::kBET(data, batch, plot=FALSE)
-  print('finmihsed running kbet')
   plot.data <- data.frame(class=rep(c('observed', 'expected'),
                                    each=length(batch.estimate$stats$kBET.observed)),
                           data =  c(batch.estimate$stats$kBET.observed,
                                     batch.estimate$stats$kBET.expected))
-  print('finished plotting the data')
-  print(ggplot2::ggplot(plot.data, aes(class, data)) + geom_boxplot() +
-          labs(x='Test', y='Rejection rate',title=paste(plotTitle,'kBET test results',sep=' ')) +
-          theme_bw() +
-          scale_y_continuous(limits=c(0,1)))
+
+  print(ggplot2::ggplot(plot.data, ggplot2::aes(class, data)) + ggplot2::geom_boxplot() +
+          ggplot2::labs(x='Test', y='Rejection rate',title=paste(plotTitle,'kBET test results',sep=' ')) +
+          ggplot2::theme_bw() +
+          ggplot2::scale_y_continuous(limits=c(0,1)))
 
   dev.off()
 
@@ -86,8 +80,8 @@ tsne_batch <- function(gene_counts, annot, output_dir, output_name)
   plotTitle <- paste( output_name, "T-SNE", sep=" ")
   invisible(capture.output(
     g <- M3C::tsne(t(gene_counts), labels=as.factor(annot$batch), legendtitle ="Batch", dotsize = 2) +
-      ggtitle(plotTitle) +
-      theme(plot.title = element_text(size=20, hjust = .5))
+      ggplot2::ggtitle(plotTitle) +
+      ggplot2::theme(plot.title = ggplot2::element_text(size=20, hjust = .5))
   ))
   #print(typeof(g))
   print(g)
@@ -111,9 +105,9 @@ pca_m3c <- function(gene_counts, annot, output_dir, output_name, foi=NULL)
   plotTitle <- paste( plotTitle, " PCA", sep="")
 
   g <- M3C::pca(gene_counts, labels=as.factor(annot$batch), legendtitle ="Batch", dotsize = 2) +
-    ggtitle(plotTitle) +
-    theme(plot.title = element_text(size=20, hjust = .5)) +
-    scale_size_continuous(range = c(1, 2))
+    ggplot2::ggtitle(plotTitle) +
+    ggplot2::theme(plot.title = ggplot2::element_text(size=20, hjust = .5)) +
+    ggplot2::scale_size_continuous(range = c(1, 2))
   print(g)
   dev.off()
 
@@ -176,15 +170,15 @@ grouped_boxplot <- function(gene_counts, annot, output_dir, dataset_name)
   png(output_file_name)
 
 
-  g <- ggplot2::ggplot(boxplot_data, aes(x = factor(batch), y = mean, fill=factor(batch))) +
-    geom_boxplot() +
-    labs(title = "Comparative Boxplot", x = "Batch", y = "Mean Gene Expression", fill = "Batch") +
-    theme(plot.title   = element_text(size=19, hjust = .5),
-          axis.title.y = element_text(size = 15),
-          axis.title.x = element_text(size = 15),
-          legend.title = element_text(size=14),
-          axis.text.x =  element_text(size=16),
-          axis.text.y =  element_text(size=16))
+  g <- ggplot2::ggplot(boxplot_data, ggplot2::aes(x = factor(batch), y = mean, fill=factor(batch))) +
+    ggplot2::geom_boxplot() +
+    ggplot2::labs(title = "Comparative Boxplot", x = "Batch", y = "Mean Gene Expression", fill = "Batch") +
+    ggplot2::theme(plot.title   = ggplot2::element_text(size=19, hjust = .5),
+          axis.title.y = ggplot2::element_text(size = 15),
+          axis.title.x = ggplot2::element_text(size = 15),
+          legend.title = ggplot2::element_text(size=14),
+          axis.text.x =  ggplot2::element_text(size=16),
+          axis.text.y =  ggplot2::element_text(size=16))
 
 
   print(g)
