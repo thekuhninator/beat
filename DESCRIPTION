@@ -27,6 +27,7 @@ Imports:
     png,
     raster,
     hash,
+    cowplot,
     gridExtra,
     getopt,
     knitr
