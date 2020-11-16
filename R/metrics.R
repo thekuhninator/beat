@@ -31,7 +31,7 @@ kbet <- function(gene_counts, annot, output_dir, output_name)
   plotTitle = paste(output_name, " kBET Plot", sep="")
 
   file_path <- paste( file.path(output_dir, output_name), "_kbet_plot.png", sep="")
-  png(file=file_path, type="cairo")
+  png(file=file_path)
   batch.estimate <- kBET::kBET(data, batch, plot=FALSE)
   plot.data <- data.frame(class=rep(c('observed', 'expected'),
                                    each=length(batch.estimate$stats$kBET.observed)),
@@ -73,7 +73,7 @@ tsne_batch <- function(gene_counts, annot, output_dir, output_name)
 {
   # output PCA
   file_path <- paste( file.path(output_dir, output_name), "_tsne_plot.png", sep="")
-  png(file=file_path, type="cairo")
+  png(file=file_path)
 
   #name = paste(sapply(paste(unlist(strsplit(output_name, " ")), sep=" "), simpleCap), collapse=" ")
   #plotTitle = paste(capitalize(unlist(strsplit(name, "_"))), collapse= " ")
@@ -98,7 +98,7 @@ pca_m3c <- function(gene_counts, annot, output_dir, output_name, foi=NULL)
 
   # output PCA
   file_path <- paste( file.path(output_dir, output_name), "_pca_picture.png", sep="")
-  png(file=file_path, type="cairo")
+  png(file=file_path)
 
   name = paste(sapply(paste(unlist(strsplit(output_name, "[_]")), sep=" "), simpleCap), collapse=" ")
   plotTitle = paste(capitalize(unlist(strsplit(name, "_"))), collapse= " ")
@@ -167,7 +167,7 @@ grouped_boxplot <- function(gene_counts, annot, output_dir, dataset_name)
   #print(boxplot)data
   file_name <- paste(dataset_name, '_comparative_boxplot.png', sep ="")
   output_file_name <- file.path(output_dir, file_name)
-  png(output_file_name, type="cairo")
+  png(output_file_name)
 
 
   g <- ggplot2::ggplot(boxplot_data, ggplot2::aes(x = factor(batch), y = mean, fill=factor(batch))) +
