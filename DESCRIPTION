@@ -23,7 +23,13 @@ Imports:
     gplots,
     M3C,
     readr,
-    matrixStats
+    matrixStats,
+    png,
+    raster,
+    hash,
+    gridExtra,
+    getopt,
+    knitr
 Remotes: 
     theislab/kbet,
     bioc::M3C
