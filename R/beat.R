@@ -76,7 +76,9 @@ beat <- function(input_counts, input_metadata, output_dir, dataset_name, origina
 #' Run MultiBeat
 #'
 #' Takes in gene counts, metadata, and output paths, as well as a dataset name and outputs an html report.
-#' @param gene_counts the path to the gene counts with rows as genes and columns as samples
+#' @param parent_dir the path to the gene counts with rows as genes and columns as samples
+#' @param output_dir the path to the directory in which the output shall be.
+#' @param output_name the name of the report that will be generated.
 #' @export
 multi_beat <- function(parent_dir, output_dir, output_name) {
   
