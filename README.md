@@ -155,5 +155,3 @@ If you find `beat` useful in your research please cite the related publication:
 
 [Assessment of Batch Correction Methods for Whole Blood RNA-Seq Data](http://google.com)
 <h1> BEAT Workflow Pipeline/Use Diagram </h1>
-
-![BEAT Pipeline](https://github.com/thekuhninator/beat/blob/master/beat_pipeline.png?raw=true)
