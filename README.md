@@ -154,4 +154,3 @@ If you are having issues with `beat`, feel free to reach out to me, at roman (do
 If you find `beat` useful in your research please cite the related publication:
 
 [Assessment of Batch Correction Methods for Whole Blood RNA-Seq Data](http://google.com)
-<h1> BEAT Workflow Pipeline/Use Diagram </h1>
