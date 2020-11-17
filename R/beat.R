@@ -66,7 +66,7 @@ beat <- function(input_counts, input_metadata, output_dir, dataset_name, origina
   # write them to an html report
   generate_report(dataset_name, output_dir, kbet_base64, pca_base64, tsne_base64, boxplot_base64)
   # write them to the log file
-  generateLogFile(dataset_name, output_dir, original, kbet_data, tsne_plot, pca_plot, boxplot_results, hvgs)
+  generateLogFile(dataset_name, output_dir, original, kbet_data, tsne_plot, pca_plot, boxplot_results, boxplot_data, hvgs)
 
   print('The report and log file have succesfully been generated!')
 
@@ -95,11 +95,10 @@ multi_beat <- function(parent_dir, output_dir, output_name) {
   beat_files <- list.files(path=parent_dir, recursive=TRUE, pattern="\\.beat$")
   
   original_dataset_name <- NULL
-  hvgs_hash        <- hash()
-  hvgs_retention   <- hash()
-  kbet_accept_hash <- hash()
-  pca_plots        <- hash()
-  tsne_plots       <- hash()
+  hvgs_hash        <- hash::hash()
+  kbet_accept_hash <- hash::hash()
+  pca_plots        <- hash::hash()
+  tsne_plots       <- hash::hash()
   
   retained_hvgs <- NULL
   comparative_boxplot_data <- NULL
@@ -109,6 +108,7 @@ multi_beat <- function(parent_dir, output_dir, output_name) {
   #beat_file
   for (beat_file in beat_files)
   {
+    print(beat_file)
     load(file=file.path(parent_dir, beat_file))
     datasets <- c(datasets, dataset_name)
     
@@ -133,10 +133,10 @@ multi_beat <- function(parent_dir, output_dir, output_name) {
     
   }
   # create the output
-  kbet_plot_data <- get_kbet_plot_data(hvgs_hash, original_dataset_name, kbet_accept_hash)  
+  kbet_plot_data <- get_kbet_plot_data(hvgs_hash, original_dataset_name, kbet_accept_hash, datasets)  
   print(kbet_plot_data)
   kbet_hvg_path  <- kbet_hvg_scatterplot(kbet_plot_data, output_dir, output_name)
-  boxplot_path   <- grouped_boxplot(comparative_boxplot_data, output_dir, output_name)
+  boxplot_path   <- grouped_boxplot_multi(comparative_boxplot_data, output_dir, output_name)
   pca_tile_path  <- tile_plots(pca_plots, datasets, 'pca', output_dir, output_name, 'PCA Combined Plots')
   tsne_tile_path <- tile_plots(tsne_plots,  datasets,'tsne',   output_dir, output_name, 'T-SNE Combined Plots')
   

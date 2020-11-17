@@ -2,11 +2,13 @@
 #
 # Get the kbet plot data
 #
-get_kbet_plot_data <- function(hvgs_hash, original_dataset_name, kbet_accept_hash)
+get_kbet_plot_data <- function(hvgs_hash, original_dataset_name, kbet_accept_hash, datasets)
 {
   original_hvg_list <- hvgs_hash[[original_dataset_name]]
   #print('length of orignal hvgs list')
   num_original_hvgs <- length(original_hvg_list)
+  hvgs_retention   <- hash::hash()
+  
   #print(num_original_hvgs)
   
   # get the hvgs percent retained
@@ -55,12 +57,12 @@ kbet_hvg_scatterplot <- function(kbet_plot_data, output_dir, output_name)
   png(output_file_path)
   
   print(kbet_plot_data)
-  g <- ggplot(kbet_plot_data, aes(x=as.numeric(hvgs_retained), y = as.numeric(kbet_acceptance), color = dataset_name)) + 
-    geom_point(size=4) + 
-    labs(title = "KBET vs HVGs Plot", x = "Percent of HVGS Retained",
+  g <- ggplot2::ggplot(kbet_plot_data, ggplot2::aes(x=as.numeric(hvgs_retained), y = as.numeric(kbet_acceptance), color = dataset_name)) + 
+    ggplot2::geom_point(size=4) + 
+    ggplot2::labs(title = "KBET vs HVGs Plot", x = "Percent of HVGS Retained",
          y = "kBET Acceptance Rate", color="Dataset") + 
-    scale_x_continuous(limits=c(0,1)) + 
-    scale_y_continuous(limits=c(0,1))
+    ggplot2::scale_x_continuous(limits=c(0,1)) + 
+    ggplot2::scale_y_continuous(limits=c(0,1))
   
   print(g)
   
@@ -72,7 +74,7 @@ kbet_hvg_scatterplot <- function(kbet_plot_data, output_dir, output_name)
 #
 # Genereate grouped boxplot
 #
-grouped_boxplot <- function(boxplot_data, output_dir, output_name)
+grouped_boxplot_multi <- function(boxplot_data, output_dir, output_name)
 {
   # create the output file
   file_name <- paste(output_name, '_comparative_boxplot.png')
@@ -80,12 +82,12 @@ grouped_boxplot <- function(boxplot_data, output_dir, output_name)
   png(output_file_path)
   
   # generate the plot
-  g <- ggplot(comparative_boxplot_data, aes(x=dataset,
+  g <- ggplot2::ggplot(boxplot_data, ggplot2::aes(x=dataset,
                                             y=mean,
                                             fill=as.factor(batch))) +
-    geom_boxplot() +
-    labs(title = "Comparative Grouped Boxplot", x ="Dataset", y = "Gene Mean Expression", fill = "Batch") +
-    theme(axis.text.x = element_text(angle=30))
+    ggplot2::geom_boxplot() +
+    ggplot2::labs(title = "Comparative Grouped Boxplot", x ="Dataset", y = "Gene Mean Expression", fill = "Batch") +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle=30))
   
   
   # save the output file
@@ -109,12 +111,12 @@ tile_plots <- function(plots, dataset_names, plot_name, output_dir, output_name,
   for(name in dataset_names)
   {
     plot <- plots[[name]]
-    plot <- plot + theme_bw()
+    plot <- plot + ggplot2::theme_bw()
     plot_list[[name]] <-plot
   }
   
-  p_no_legend <- lapply(plot_list, function(x) x + theme(legend.position = "none"))
-  legend <- cowplot::get_legend(plot_list[[1]] + theme(legend.position = "bottom"))
+  p_no_legend <- lapply(plot_list, function(x) x + ggplot2::theme(legend.position = "none"))
+  legend <- cowplot::get_legend(plot_list[[1]] + ggplot2::theme(legend.position = "bottom"))
   title <- cowplot::ggdraw() + cowplot::draw_label(combined_title, fontface = "bold")
   p_grid <- cowplot::plot_grid(plotlist = p_no_legend, ncol = 2)
   g <- cowplot::plot_grid(title, p_grid, legend, ncol = 1, rel_heights = c(0.1, 1, 0.2))

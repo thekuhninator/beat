@@ -79,12 +79,12 @@ generate_report <- function(dataset_name, output_dir, kbet_src, pca_src, tsne_sr
   close(html_report)
 }
 
-generateLogFile <- function(dataset_name, output_dir, original, kbet_results, tsne_plot, pca_plot, boxplot_results, hvgs)
+generateLogFile <- function(dataset_name, output_dir, original, kbet_results, tsne_plot, pca_plot, boxplot_results, boxplot_data, hvgs)
 {
 
   file_name <- paste(dataset_name, '_beat_log.beat',sep="")
   output_file_path <- file.path(output_dir, file_name)
-  save(dataset_name, original, kbet_results, tsne_plot, boxplot_results, pca_plot, hvgs, file=output_file_path)
+  save(dataset_name, original, kbet_results, tsne_plot, boxplot_results, pca_plot, boxplot_data, hvgs, file=output_file_path)
 }
 
 toBase64 <- function(image_file) {
