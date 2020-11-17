@@ -7,11 +7,11 @@
 multi_beat(parent_dir, output_dir, output_name)
 }
 \arguments{
-\item{parent_dir}{the path to the gene counts with rows as genes and columns as samples}
+\item{parent_dir}{the path to the parent directory that holds in it subdirectories or their subdirectories, files with the .beat extension (beat log files) These will then be used for the final report.}
 
-\item{output_dir}{the path to the directory in which the output shall be.}
+\item{output_dir}{the path where the final report and figures will be generated.}
 
-\item{output_name}{the name of the report that will be generated.}
+\item{output_name}{the name of the report.}
 }
 \description{
 Takes in gene counts, metadata, and output paths, as well as a dataset name and outputs an html report.

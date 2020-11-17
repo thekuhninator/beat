@@ -2,12 +2,20 @@
 % Please edit documentation in R/beat.R
 \name{beat}
 \alias{beat}
-\title{Run Beat}
+\title{Beat}
 \usage{
 beat(input_counts, input_metadata, output_dir, dataset_name, original)
 }
 \arguments{
-\item{gene_counts}{the path to the gene counts with rows as genes and columns as samples}
+\item{input_counts}{the path to the gene counts with rows as genes and columns as samples}
+
+\item{input_metadata}{the path to the metadata with attributes as columns and the samples as the rows, with the first row having the id of each sample.}
+
+\item{output_dir}{the path to the folder where the output files and output report will be generated.}
+
+\item{dataset_name}{the name of the dataset to be used in the report and plots.}
+
+\item{original}{boolean representing if these are the uncorrected counts. (If using multibeat there should only be one original)}
 }
 \description{
 Takes in gene counts, metadata, and output paths, as well as a dataset name and outputs an html report.

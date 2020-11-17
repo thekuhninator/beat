@@ -1,7 +1,11 @@
-#' Run Beat
+#' Beat
 #'
 #' Takes in gene counts, metadata, and output paths, as well as a dataset name and outputs an html report.
-#' @param gene_counts the path to the gene counts with rows as genes and columns as samples
+#' @param input_counts the path to the gene counts with rows as genes and columns as samples
+#' @param input_metadata the path to the metadata with attributes as columns and the samples as the rows, with the first row having the id of each sample.
+#' @param output_dir the path to the folder where the output files and output report will be generated.
+#' @param dataset_name the name of the dataset to be used in the report and plots.
+#' @param original boolean representing if these are the uncorrected counts. (If using multibeat there should only be one original)
 #' @export
 beat <- function(input_counts, input_metadata, output_dir, dataset_name, original) {
 
@@ -76,9 +80,9 @@ beat <- function(input_counts, input_metadata, output_dir, dataset_name, origina
 #' Run MultiBeat
 #'
 #' Takes in gene counts, metadata, and output paths, as well as a dataset name and outputs an html report.
-#' @param parent_dir the path to the gene counts with rows as genes and columns as samples
-#' @param output_dir the path to the directory in which the output shall be.
-#' @param output_name the name of the report that will be generated.
+#' @param parent_dir the path to the parent directory that holds in it subdirectories or their subdirectories, files with the .beat extension (beat log files) These will then be used for the final report.
+#' @param output_dir the path where the final report and figures will be generated.
+#' @param output_name the name of the report.
 #' @export
 multi_beat <- function(parent_dir, output_dir, output_name) {
   
