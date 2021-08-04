@@ -3,9 +3,42 @@ BEAT - (Batch Effect Assessment Tool) is designed for researchers to assess the 
 
 ## Installation 
 
-The Batch Effect Assessment Tool (BEAT) package for R. Used to assess the magnitude of the batch effect present in RNA-Seq data.
+The Batch Effect Assessment Tool (BEAT) package for R used to assess the magnitude of the batch effect present in RNA-Seq data. Only R version 4.0 and above is officialy supported. 
 
-To install this tool run the following commands `library(devtools) install_github('thekuhninator/beat')`
+To install this tool run the following commands 
+
+```
+# if you do not yet have devtools install devtools
+install.packages("devtools")
+
+# load the devtools library and install BEAT
+library(devtools)
+install_github('thekuhninator/beat')
+```
+
+## Dependencies
+
+The following is a list of dependencies that are installed when installing BEAT.
+
+```
+kBET
+knitr
+ggplot2
+devtools
+dplyr
+gplots
+M3C
+readr
+matrixStats
+png
+raster
+hash
+cowplot
+gridExtra
+getopt
+knitr
+```
+
 
 ## Running beat
 
