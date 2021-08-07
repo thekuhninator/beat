@@ -1,42 +1,4 @@
 #
-# Get the kBet plot data...
-#
-get_kbet_hvg_data <- function(kbet_hvg_data)
-{
-  print("*** PRINT TEST KBET HVG DATA")
-  print("*** PRINT TEST KBET HVG DATA")
-  print("*** PRINT TEST KBET HVG DATA")
-  print("*** PRINT TEST KBET HVG DATA")
-  #kbet_hvg_data <- c()
-  #print(datset)
-  #print(hvgs_hash)
-  #print(kbet_accept_hash)
-  print("****** THE ACTUAL THINGS BEING PASSED IN")
-  print(kbet_hvg_data)
-  print("after thing is passed in")
-
-  for(i in 1:nrow(kbet_hvg_data)) {       # for-loop over rows
-    print("row")
-    print(kbet_hvg_data[i, ])
-    print(kbet_hvg_data[i, "kbet_acceptance"])
-    print(kbet_hvg_data[i, "dataset_name"])
-    print(kbet_hvg_data[i, "hvgs_retained"])
-  }
-
-  # let's iterate through datasets...
-  for (datasetName in datasets) {
-    # add the name to a list...
-    kbet_hvg_data <- c(kbet_hvg_data, datasetName)
-    # add the kBEt acceptance rate to a list
-    #print("kbet and others at datasetName")
-    #print(kbet_accept_hash[[datasetName]])
-    #hvgs_retained), y = as.numeric(kbet_acceptance), color = dataset_name
-    #print(hvgs_hash[[datasetName]])
-    # add the HVGs to a list
-  }
-}
-
-#
 # Get the kbet plot data
 #
 get_kbet_plot_data <- function(hvgs_hash, original_dataset_name, kbet_accept_hash, datasets)
@@ -81,7 +43,7 @@ get_kbet_plot_data <- function(hvgs_hash, original_dataset_name, kbet_accept_has
     #kbet_plot_data[nrow(kbet_plot_data) , 2] = dataset_name
     #kbet_plot_data[nrow(kbet_plot_data), 3] = retained
   }
-  print(kbet_plot_data)
+  #print(kbet_plot_data)
   return(kbet_plot_data)
 }
 
@@ -93,7 +55,7 @@ kbet_hvg_scatterplot <- function(kbet_plot_data, output_dir, output_name)
   output_file_path <- file.path(output_dir, file_name)
   png(output_file_path)
 
-  print(kbet_plot_data)
+  #print(kbet_plot_data)
   g <- ggplot2::ggplot(kbet_plot_data, ggplot2::aes(x=as.numeric(hvgs_retained), y = as.numeric(kbet_acceptance), color = dataset_name)) +
     ggplot2::geom_point(size=4) +
     ggplot2::labs(title = "KBET vs HVGs Plot", x = "Percent of HVGS Retained",
@@ -172,8 +134,8 @@ generate_aggregate_report <- function(kbet_hvg_src, boxplot_src, pca_tile_src, t
   <th>HVGs Retained</th>
   </tr>'
   for(i in 1:nrow(kbet_hvg_data)) {       # for-loop over rows
-    print(i)
-    print(kbet_hvg_data[i, ])
+    #print(i)
+    #print(kbet_hvg_data[i, ])
     kBet_hvg_table <- paste(kBet_hvg_table, ' <tr> ', sep="")
     kBet_hvg_table <- paste(kBet_hvg_table, '<td> ' , kbet_hvg_data[i, "dataset_name"] , '</td>',sep="")
     kBet_hvg_table <- paste(kBet_hvg_table, '<td> ' , round(kbet_hvg_data[i, "kbet_acceptance"],2) , '</td>',sep="")

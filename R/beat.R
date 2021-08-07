@@ -99,6 +99,7 @@ multi_beat <- function(parent_dir, output_dir, output_name) {
   beat_files <- list.files(path=parent_dir, recursive=TRUE, pattern="\\.beat$")
 
   original_dataset_name <- NULL
+  originalFound <- FALSE
   hvgs_hash        <- hash::hash()
   kbet_accept_hash <- hash::hash()
   pca_plots        <- hash::hash()
@@ -116,8 +117,18 @@ multi_beat <- function(parent_dir, output_dir, output_name) {
     load(file=file.path(parent_dir, beat_file))
     datasets <- c(datasets, dataset_name)
 
-    if(original)
-      original_dataset_name <- dataset_name
+    if(original) {
+      if(!originalFound) {
+        original_dataset_name <- dataset_name
+        originalFound = TRUE
+      }
+      else {
+        stop(paste("There is more than one original/uncorrected dataset...
+             Check to see you did not run it with original as TRUE for more
+                   than one dataset. Both", original_dataset_name, dataset_name,
+                   "are set as uncorrected.", sep=" "))
+      }
+    }
 
     # save the hvgs
     hvgs_hash[[dataset_name]] <- hvgs
