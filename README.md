@@ -58,7 +58,7 @@ The following is a detailed description of how the arguments used for `beat`.
 
 <b> input_counts \<string\> </b>
 
-The path to the gene counts file in comma seperated value format (.csv). The gene counts should be normalized prior to running beat. The gene counts should have the rows be gene counts and the columns be the name of the samples. See the dataset below for an example.
+The path to the gene counts file in comma seperated value format (.csv). The gene counts should be log2 transformed prior to running beat. The gene counts should have the rows be gene counts and the columns be the name of the samples. See the dataset below for an example.
 
 Example:
 
@@ -86,7 +86,7 @@ A directory to output the pca plot,  t-sne plot, k-bet plot, boxplot, beat log f
 
 <b> dataset_name \<string\> </b>
 
-The name of the dataset to be used on the plots and name of the files. If running on batch corrected data, you should add the name of the correction method to the name as well to help distinguish it from other beat files run on the same dataset, but with a different batch correction method used.
+The name of the dataset to be used on the plots and name of the files. If running on batch corrected data, you should add the name of the correction method to the name as well to help distinguish it from other beat files run on the same dataset, but with a different batch correction method used. So for example, if a dataset (named dataset) was corrected with combat, a good name would be dataset_combat.
 
 <b> original </b>
 
@@ -151,8 +151,7 @@ The path to the output file where multi_beat will output the aggregate report.
 
 <b> output_name \<string\> </b> (required)
 
-The name of the dataset being examined, used for titles and file names.
-
+The name of the multibeat report. Used for the title of the report and file names.
 
 ### multi_beat Output Files
 
