@@ -86,7 +86,7 @@ A directory to output the pca plot,  t-sne plot, k-bet plot, boxplot, beat log f
 
 <b> dataset_name \<string\> </b>
 
-The name of the dataset to be used on the plots and name of the files. If running on batch corrected data, it would be useful to add the name of the correction method to the name as well to help identify it from the others. So an appropriate name for a combat corrected dataset would be dataset_combat.
+The name of the dataset to be used on the plots and name of the files. If running on batch corrected data, you should add the name of the correction method to the name as well to help distinguish it from other beat files run on the same dataset, but with a different batch correction method used.
 
 <b> original </b>
 
