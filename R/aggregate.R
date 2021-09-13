@@ -133,6 +133,9 @@ generate_aggregate_report <- function(kbet_hvg_src, boxplot_src, pca_tile_src, t
   <th>kBET Acceptance Rate</th>
   <th>HVGs Retained</th>
   </tr>'
+  #kbet_hvg_data <- kbet_hvg_data[order("kbet_acceptance", "hvgs_retained"),]
+  kbet_hvg_data <- kbet_hvg_data[order(-kbet_hvg_data$kbet_acceptance, -kbet_hvg_data$hvgs_retained),]
+  # kbet_hvg_data[i, "dataset_name"]
   for(i in 1:nrow(kbet_hvg_data)) {       # for-loop over rows
     #print(i)
     #print(kbet_hvg_data[i, ])
@@ -169,6 +172,8 @@ generate_aggregate_report <- function(kbet_hvg_src, boxplot_src, pca_tile_src, t
           <h3>kBET - K-Nearest Neighbour Batch Effect Test Acceptance Rate and HVGs Retention Rate Table</h2>
           ', kBet_hvg_table, '
 
+          The table above has been sorted by highest kBET score, then by highest HVG retention rate.
+
 
           <!-- *** Section 1 *** --->
           <h2>T-Stochastic Neighbor Embedding (T-SNE) Tiled Plots</h2>
@@ -178,7 +183,7 @@ generate_aggregate_report <- function(kbet_hvg_src, boxplot_src, pca_tile_src, t
 
           <!-- *** Section 2 *** --->
           <h2>Comparative BoxPlot</h2>
-          <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+          <iframe width="1000" height="550" framebgeneraorder="0" seamless="seamless" scrolling="no" \
           src="',  boxplot_src, '"></iframe>
           <p>The combined comparative boxplot is a useful way of visualizing how the batches vary in the distribution of each gene\'s mean expression. Each gene\'s mean expression value across all samples within a batch are used as data points in constructing the comparative boxplot. If the boxes appear to be similar in their distribution the batch effect is not as severe for the dataset.</p>
 
