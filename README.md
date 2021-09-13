@@ -1,6 +1,10 @@
 # beat
 BEAT - (Batch Effect Assessment Tool) is designed for researchers to assess the severity of the batch effect present in their RNA-Seq data. The tool is an R package that can be installed and run easily. It takes in as input gene counts, metadata, a dataset name, an output directory, and a flag denoting whether the dataset is uncorrected and outputs an html report with a pca plot, t-sne plot, comparative boxplot, as well as results from kBET. It also ouptuts a beat log file for use by multi_beat. After generating several beat reports and log files, a user can then run multi_beat on a parent directory to generate an aggregate report to compare the batch effect across the datasets using the metrics provided by BEAT. This can be used to help researchers choose which batch correction method works best for their particular dataset. 
 
+## How to run/BEAT Example
+
+For an example of how to run BEAT, please see [this repository](https://github.com/thekuhninator/beat_example). It comes with an R notebook showing how to run beat, example data, and example output.
+
 ## Installation 
 
 The Batch Effect Assessment Tool (BEAT) package for R used to assess the magnitude of the batch effect present in RNA-Seq data. Only R version 4.0 and above is officialy supported. 
