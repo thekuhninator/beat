@@ -172,7 +172,7 @@ generate_aggregate_report <- function(kbet_hvg_src, boxplot_src, pca_tile_src, t
           <h3>kBET - K-Nearest Neighbour Batch Effect Test Acceptance Rate and HVGs Retention Rate Table</h2>
           ', kBet_hvg_table, '
 
-          The table above has been sorted by highest kBET score, then by highest HVG retention rate.
+          <p>The table above has been sorted by highest kBET score, then by highest HVG retention rate.</p>
 
 
           <!-- *** Section 1 *** --->
