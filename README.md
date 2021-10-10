@@ -1,10 +1,6 @@
 # beat
 BEAT - (Batch Effect Assessment Tool) is designed for researchers to assess the severity of the batch effect present in their RNA-Seq data. The tool is an R package that can be installed and run easily. It takes in as input gene counts, metadata, a dataset name, an output directory, and a flag denoting whether the dataset is uncorrected and outputs an html report with a pca plot, t-sne plot, comparative boxplot, as well as results from kBET. It also ouptuts a beat log file for use by multi_beat. After generating several beat reports and log files, a user can then run multi_beat on a parent directory to generate an aggregate report to compare the batch effect across the datasets using the metrics provided by BEAT. This can be used to help researchers choose which batch correction method works best for their particular dataset. 
 
-## How to run/BEAT Example
-
-For an example of how to run BEAT, please see [this repository](https://github.com/thekuhninator/beat_example). It comes with an R notebook showing how to run beat, example data, and example output.
-
 ## Installation 
 
 The Batch Effect Assessment Tool (BEAT) package for R used to assess the magnitude of the batch effect present in RNA-Seq data. Only R version 4.0 and above is officialy supported. 
@@ -19,6 +15,21 @@ install.packages("devtools")
 library(devtools)
 install_github('thekuhninator/beat')
 ```
+
+## How to run BEAT with Examples
+
+Here is an example of how to run BEAT.
+
+```{r}
+input_counts <- "./example_data/dataset1/dataset1_gene_counts.csv"
+input_annot  <- "./example_data/dataset1/dataset1_metadata.csv"
+output_dir <- "./beat_output/dataset1_uncorrected"
+dataset_name <- "dataset1_uncorrected"
+original <- TRUE
+beat::beat(input_counts, input_annot, output_dir, dataset_name, original)
+```
+
+For a more detailed example of how to run BEAT, please see [this repository](https://github.com/thekuhninator/beat_example). It provides additional documentation, an R notebook showing how to run beat, example data, and example output.
 
 ## Dependencies
 
@@ -43,22 +54,9 @@ getopt
 knitr
 ```
 
-
-## Running beat
-
-BEAT is a package within the R programming language. Below is an example of how to run beat:
-
-<pre><code>input_counts <- "./dataset_1/dataset_unfiltered_gene_counts.csv"
-input_annot  <- "./dataset_1/dataset_unfiltered_metadata.csv"
-output_dir <- "./beat_output"
-dataset_name <- "dataset_1"
-original <- TRUE
-beat::beat(input_counts, input_annot, output_dir, dataset_name, original)
-</code></pre> 
+### Arguments
 
 The following is a detailed description of how the arguments used for `beat`.
-
-### Arguments
 
 <b> input_counts \<string\> </b>
 
