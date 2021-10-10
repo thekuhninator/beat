@@ -16,6 +16,21 @@ library(devtools)
 install_github('thekuhninator/beat')
 ```
 
+## How to run BEAT with Examples
+
+Here is an example of how to run BEAT.
+
+```{r}
+input_counts <- "./example_data/dataset1/dataset1_gene_counts.csv"
+input_annot  <- "./example_data/dataset1/dataset1_metadata.csv"
+output_dir <- "./beat_output/dataset1_uncorrected"
+dataset_name <- "dataset1_uncorrected"
+original <- TRUE
+beat::beat(input_counts, input_annot, output_dir, dataset_name, original)
+```
+
+For a more detailed example of how to run BEAT, please see [this repository](https://github.com/thekuhninator/beat_example). It provides additional documentation, an R notebook showing how to run beat, example data, and example output.
+
 ## Dependencies
 
 The following is a list of dependencies that are installed when installing BEAT.
@@ -39,22 +54,9 @@ getopt
 knitr
 ```
 
-
-## Running beat
-
-BEAT is a package within the R programming language. Below is an example of how to run beat:
-
-<pre><code>input_counts <- "./dataset_1/dataset_unfiltered_gene_counts.csv"
-input_annot  <- "./dataset_1/dataset_unfiltered_metadata.csv"
-output_dir <- "./beat_output"
-dataset_name <- "dataset_1"
-original <- TRUE
-beat::beat(input_counts, input_annot, output_dir, dataset_name, original)
-</code></pre> 
+### Arguments
 
 The following is a detailed description of how the arguments used for `beat`.
-
-### Arguments
 
 <b> input_counts \<string\> </b>
 
