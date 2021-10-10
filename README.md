@@ -60,7 +60,7 @@ The following is a detailed description of how the arguments used for `beat`.
 
 <b> input_counts \<string\> </b>
 
-The path to the gene counts file in comma seperated value format (.csv). The gene counts should be log2 transformed prior to running beat. The gene counts should have the rows be gene counts and the columns be the name of the samples. See the dataset below for an example.
+The path to the gene counts file in comma seperated value format (.csv). The gene counts should be log transformed prior to running beat. The gene counts should have the rows be gene counts and the columns be the name of the samples. See the dataset below for an example.
 
 Example:
 
